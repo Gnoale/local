@@ -1,0 +1,6 @@
+**
+.**
+!.config/awesome/**
+!.vimrc
+!.xinitrc
+!.gitignore
