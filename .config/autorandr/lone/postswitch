@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# tap to clic, 2 finger to paste / right clic / scroll with 2 fingers
+#xinput set-prop "DELL08AF:00 06CB:76AF Touchpad" "Synaptics Tap Action" 2, 3, 0, 0, 1, 3, 0
+xinput set-prop "DELL08AF:00 06CB:76AF Touchpad" "Synaptics Two-Finger Scrolling" 1, 1
+xinput set-prop "DELL08AF:00 06CB:76AF Touchpad" "Synaptics Tap Action" 2, 3, 0, 0, 0, 1, 0
+
+# gros doigts
+# https://wiki.archlinux.org/index.php/Touchpad_Synaptics#Disable_touchpad_while_typing
+synclient PalmDetect=1
+synclient PalmMinZ=800
+
+
+echo 'awesome.restart()' | awesome-client

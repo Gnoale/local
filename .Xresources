@@ -1,9 +1,20 @@
+XTerm*metaSendsEscape: true
+XTerm.vt100.metaSendsEscape: true
+UXTerm.vt100.metaSendsEscape: true
+
+
+! Increase-decrease font size using Ctrl-/+
+xterm*VT100.Translations: #override \
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font()
+
+
 xterm*selectToClipboard:true
 xterm*saveLines: 4096
 xterm*termName: xterm-256color
 xterm*locale: true
 XTerm*faceName: Liberation Mono
-XTerm*faceSize: 10
+XTerm*faceSize: 14
 
 #define S_base03        #002b36
 #define S_base02        #073642
