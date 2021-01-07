@@ -1,5 +1,4 @@
 execute pathogen#infect()
-" Use Unix as the standard file type
 set ffs=unix,dos,mac
 set encoding=utf8
 
@@ -36,5 +35,32 @@ set mouse=a
 
 " hell bell
 set noerrorbells visualbell t_vb=
-autocmd GUIEnter * set visualbell t_vb=
 set noswapfile
+
+
+set noswapfile
+
+autocmd GUIEnter * set visualbell t_vb=
+
+"let mapleader = "-"  
+"nnoremap <leader>sv :source $MYVIMRC<cr> 
+"nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
+" 
+"inoremap <c-d> <esc>ddi 
+"nnoremap <c-d> dd 
+"noremap <leader>- ddp 
+"noremap _ ddk<S-p> 
+" 
+"noremap <space> viw 
+" 
+"nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel 
+" 
+"nnoremap <leader>n <esc>:tabnew<space> 
+""autocmd BufNewFile * :write 
+" 
+"augroup comment 
+"        autocmd! 
+"        autocmd FileType python nnoremap <buffer> <leader>c I#<esc> 
+"        autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc> 
+"augroup END 
+
