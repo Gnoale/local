@@ -1,7 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/guillaumenoale/git/kayrros/catalogue-worker/sources'
-let g:netrw_dirhist_2='/home/guillaumenoale/git/prom/prom-client/lib'
-let g:netrw_dirhist_3='/home/guillaumenoale/git/prom/prom-client/lib/metrics'
-let g:netrw_dirhist_4='/home/guillaumenoale/git/kayrros/salt/prometheus-server'
-let g:netrw_dirhist_5='/home/guillaumenoale/git/prom/prometheus/pkg/labels'

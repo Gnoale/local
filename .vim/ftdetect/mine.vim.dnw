@@ -1,3 +1,0 @@
-au BufRead,BufNewFile *.sls setf yaml
-
-au BufRead,BufNewFile *.go set filetype=go 
