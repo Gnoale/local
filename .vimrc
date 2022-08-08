@@ -1,5 +1,6 @@
 execute pathogen#infect()
-set ffs=unix,dos,mac
+
+set ffs=unix,dos
 set encoding=utf8
 
 " Use ONE clipboard : the system + register
@@ -9,21 +10,11 @@ syntax enable
 set background=dark
 set nu
 
-set t_Co=256
-set term=xterm-256color
+" set t_Co=256
+" set term=xterm-256color
 "colorscheme solarized8_dark
 colorscheme dracula
 "colorscheme bubblegum-256-light
-set bs=2
-
-" 1 tab == n spaces
-set shiftwidth=2
-set tabstop=2
-set expandtab
-		
-" Linebreak on 100 characters
-set lbr
-set tw=100
 
 "set hlsearch
 set incsearch
@@ -35,32 +26,95 @@ set mouse=a
 
 " hell bell
 set noerrorbells visualbell t_vb=
-set noswapfile
-
-
-set noswapfile
-
 autocmd GUIEnter * set visualbell t_vb=
+set noswapfile
 
-"let mapleader = "-"  
-"nnoremap <leader>sv :source $MYVIMRC<cr> 
-"nnoremap <leader>ev :vsplit $MYVIMRC<cr> 
-" 
-"inoremap <c-d> <esc>ddi 
-"nnoremap <c-d> dd 
-"noremap <leader>- ddp 
-"noremap _ ddk<S-p> 
-" 
-"noremap <space> viw 
-" 
-"nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel 
-" 
-"nnoremap <leader>n <esc>:tabnew<space> 
-""autocmd BufNewFile * :write 
-" 
-"augroup comment 
-"        autocmd! 
-"        autocmd FileType python nnoremap <buffer> <leader>c I#<esc> 
-"        autocmd FileType javascript nnoremap <buffer> <leader>c I//<esc> 
-"augroup END 
+au FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tw=100
 
+"let g:go_fmt_command='goimportsif exists('g:go_loaded_install')
+let g:go_fmt_command="goimports"
+nnoremap gc :GoCallers<cr>
+
+"endif
+autocmd FileType markdown setlocal spell
+
+let g:terraform_fmt_on_save=1
+let g:hcl_align_save=1
+
+"let g:autopep8_on_save = 1
+"
+" The hard way
+" random mapping and leader
+let mapleader = "-"
+nnoremap <c-d> dd
+"noremap <space> viw
+
+" open and source .vimrc
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+" cut and paste current line down or up
+noremap <leader>- ddp
+noremap _ ddk<S-p>
+
+"abbrev is cool, find usefull ones ?
+iabbrev waht what
+iabbrev tehn then
+
+"surround
+nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
+nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+"newtab
+nnoremap <leader>n <esc>:tabnew<space>
+"autocmd BufNewFile * :write
+"
+
+"" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+" Go to last active tab
+au TabLeave * let g:lasttab = tabpagenr()
+nnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
+vnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
+
+" super annoying plugin
+"https://stackoverflow.com/questions/24931088/disable-omnicomplete-or-ftplugin-or-something-in-vim
+let g:omni_sql_no_default_maps = 1
+let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
+
+" https://github.com/dense-analysis/ale
+" completion
+let g:ale_completion_enabled = 1
+" Only run linters named in ale_linters settings.
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'vue': ['eslint', 'vls'],
+\   'python': ['flake8', 'pylint'],
+\}
+
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\}
+
+au BufWrite * ALEFix
+
+
+" js prettier
+"autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
+"autocmd FileType vue set formatprg=eslint --ext .js,.vue\ --stdin
+"autocmd BufWritePre *.js  :normal gggqG
+"autocmd BufWritePre *.vue  :normal gggqG
+"
+"
+nmap ,cs :let @*=expand("%")<CR>
