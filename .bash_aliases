@@ -1,12 +1,11 @@
-alias gp="git pull"
 alias gs="git status"
 alias gl="git log"
 alias gln="git log --name-only"
 alias glo="git log --oneline"
 alias gc="git commit -m"
 alias gcs="git commit -S -m"
-alias gcm="git checkout master && git pull"
 alias grs="git rebase HEAD~1 --exec 'git commit --amend --no-edit -n -S'"
+alias gld="git log --graph --oneline --decorate --all"
 
 alias diff="colordiff"
 alias cks="cd ~/git/kayrros/salt"
@@ -27,6 +26,8 @@ alias ssalt="ssh 10.100.6.4"
 
 alias xc="xclip -selection clipboard"
 
-alias bc="batcat"
+alias bc="bat"
 
 alias tf="terraform"
+
+alias ipy="ipython3"

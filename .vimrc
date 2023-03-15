@@ -33,7 +33,11 @@ au FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tw=100
 
 "let g:go_fmt_command='goimportsif exists('g:go_loaded_install')
 let g:go_fmt_command="goimports"
+let g:go_metalinter_autosave=1
 nnoremap gc :GoCallers<cr>
+"restart gopls
+" https://github.com/fatih/vim-go/issues/2550#issuecomment-545923505
+nnoremap <leader>pls <esc>:call go#lsp#Exit()
 
 "endif
 autocmd FileType markdown setlocal spell
@@ -64,6 +68,10 @@ iabbrev tehn then
 "surround
 nnoremap <leader>" viw<esc>a"<esc>bi"<esc>lel
 nnoremap <leader>' viw<esc>a'<esc>bi'<esc>lel
+nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
+"surroung bold mapping only in MD file
+"nnoremap <leader>* viw<esc>a**<esc>bi**<esc>lel
+
 "newtab
 nnoremap <leader>n <esc>:tabnew<space>
 "autocmd BufNewFile * :write
@@ -100,11 +108,12 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'vue': ['eslint', 'vls'],
 \   'python': ['flake8', 'pylint'],
+\   'yaml': ['yamllint'],
+\   'cpp': ['ccls'],
 \}
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
 \}
 
 au BufWrite * ALEFix
@@ -118,3 +127,18 @@ au BufWrite * ALEFix
 "
 "
 nmap ,cs :let @*=expand("%")<CR>
+
+" Jedi
+let g:jedi#usages_command = "gu"
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = ""
+
+
+"default spaces
+filetype plugin indent on
+" show existing tab with 4 spaces width
+set tabstop=4
+" when indenting with '>', use 4 spaces width
+set shiftwidth=4
+" On pressing tab, insert 4 spaces
+set expandtab
