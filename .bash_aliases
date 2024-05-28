@@ -10,7 +10,7 @@ alias gld="git log --graph --oneline --decorate --all"
 alias diff="colordiff"
 alias cks="cd ~/git/kayrros/salt"
 alias ckt="cd ~/git/kayrros/terraform"
-alias ck="cd ~/git/kayrros"
+alias ck="cd ~/git/"
 alias gn="grep -nr"
 alias gni="grep -nri"
 
@@ -26,7 +26,7 @@ alias ssalt="ssh 10.100.6.4"
 
 alias xc="xclip -selection clipboard"
 
-alias bc="bat"
+alias bc="batcat"
 
 alias tf="terraform"
 

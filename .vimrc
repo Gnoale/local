@@ -10,11 +10,7 @@ syntax enable
 set background=dark
 set nu
 
-" set t_Co=256
-" set term=xterm-256color
-"colorscheme solarized8_dark
 colorscheme dracula
-"colorscheme bubblegum-256-light
 
 "set hlsearch
 set incsearch
@@ -31,15 +27,6 @@ set noswapfile
 
 au FileType python setlocal expandtab shiftwidth=4 softtabstop=4 tw=100
 
-"let g:go_fmt_command='goimportsif exists('g:go_loaded_install')
-let g:go_fmt_command="goimports"
-let g:go_metalinter_autosave=1
-nnoremap gc :GoCallers<cr>
-"restart gopls
-" https://github.com/fatih/vim-go/issues/2550#issuecomment-545923505
-nnoremap <leader>pls <esc>:call go#lsp#Exit()
-
-"endif
 autocmd FileType markdown setlocal spell
 
 let g:terraform_fmt_on_save=1
@@ -61,6 +48,10 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 noremap <leader>- ddp
 noremap _ ddk<S-p>
 
+" save current file
+noremap <leader>w :w<cr>
+
+
 "abbrev is cool, find usefull ones ?
 iabbrev waht what
 iabbrev tehn then
@@ -74,8 +65,6 @@ nnoremap <leader>` viw<esc>a`<esc>bi`<esc>lel
 
 "newtab
 nnoremap <leader>n <esc>:tabnew<space>
-"autocmd BufNewFile * :write
-"
 
 "" Go to tab by number
 noremap <leader>1 1gt
@@ -99,39 +88,13 @@ vnoremap <silent> <c-l> :exe "tabn ".g:lasttab<cr>
 let g:omni_sql_no_default_maps = 1
 let g:ftplugin_sql_omni_key = '<Plug>DisableSqlOmni'
 
-" https://github.com/dense-analysis/ale
-" completion
-let g:ale_completion_enabled = 1
-" Only run linters named in ale_linters settings.
-let g:ale_linters_explicit = 1
-let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'vue': ['eslint', 'vls'],
-\   'python': ['flake8', 'pylint'],
-\   'yaml': ['yamllint'],
-\   'cpp': ['ccls'],
-\}
 
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
-
-au BufWrite * ALEFix
-
-
-" js prettier
-"autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
-"autocmd FileType vue set formatprg=eslint --ext .js,.vue\ --stdin
-"autocmd BufWritePre *.js  :normal gggqG
-"autocmd BufWritePre *.vue  :normal gggqG
-"
-"
-nmap ,cs :let @*=expand("%")<CR>
-
-" Jedi
-let g:jedi#usages_command = "gu"
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = ""
+"nnoremap <silent> gd :ALEGoToDefinition<cr>
+nnoremap <silent> gd :YcmCompleter GoTo<cr>
+nnoremap <silent> gr :YcmCompleter GoToReferences<cr>
+nnoremap <silent> gi :YcmCompleter GoToImplementation<cr>
+nnoremap <silent> K :YcmCompleter GetDoc<cr>
+nnoremap <silent> fi :YcmCompleter FixIt<cr>
 
 
 "default spaces
@@ -141,4 +104,6 @@ set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
+
 set expandtab
+set backspace=indent,eol,start  " more powerful backspacing
