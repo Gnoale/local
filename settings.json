@@ -1,0 +1,23 @@
+{
+    "redhat.telemetry.enabled": false,
+    "workbench.colorTheme": "Dracula Theme",
+    "workbench.preferredDarkColorTheme": "Dracula Theme Soft",
+    "workbench.preferredHighContrastColorTheme": "Dracula Theme Soft",
+    "workbench.tree.indent": 30,
+    "files.autoSave": "onFocusChange",
+    "vim.handleKeys": {
+
+        "<C-d>": true,
+        "<C-s>": false,
+        "<C-z>": false,
+        "<C-f>": false
+    },
+    "vim.useSystemClipboard": true,
+    "editor.cursorBlinking": "solid",
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": ["<C-w>"],
+            "commands" : ["workbench.action.closeActiveEditor"],
+        }
+    ],
+}
